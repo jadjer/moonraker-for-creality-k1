@@ -26,16 +26,14 @@ function set_paths() {
   done
 }
 
+function install() {
+  ln -sf "$(realpath config/moonraker.conf)" "$CONFIG_DIR"
+  ln -sf "$(realpath service/S56moonraker_service)" "$SERVICE_DIR"
+}
+
 function uninstall() {
   unlink "$CONFIG_DIR/moonraker.conf"
   unlink "$SERVICE_DIR/S56moonraker_service"
-}
-
-function install() {
-  uninstall
-
-  ln -sr ./config/moonraker.conf "$CONFIG_DIR"
-  ln -sr ./service/S56moonraker_service "$SERVICE_DIR"
 }
 
 rm -rf /root/.cache
