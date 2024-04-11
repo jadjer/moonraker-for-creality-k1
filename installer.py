@@ -100,6 +100,17 @@ def stop_service():
     print("Service stopped successfully.")
 
 
+def restart_service():
+    system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+
+    if not os.path.exists(system_service_file):
+        return
+
+    subprocess.call(f"{system_service_file} restart", shell=True)
+
+    print("Service restarted successfully.")
+
+
 def install():
     generate_moonraker_service()
 
@@ -113,8 +124,7 @@ def install():
 
     create_symbolic_link(moonraker_service_file, system_service_file)
 
-    stop_service()
-    start_service()
+    restart_service()
 
 
 def uninstall():
