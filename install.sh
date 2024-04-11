@@ -45,7 +45,7 @@ function bottom_line() {
   echo -e "${white}"
 }
 
-function menu_option() {
+function main_menu_option() {
   local menu_number=$1
   local menu_text1=$2
   local menu_text2=$3
@@ -53,6 +53,15 @@ function menu_option() {
   local total_text_length=$(( ${#menu_text1} + ${#menu_text2} ))
   local padding=$((max_length - total_text_length))
   printf " │  ${yellow}${menu_number}${white}) ${green}${menu_text1} ${white}${menu_text2}%-${padding}s${white}│\n" ''
+}
+
+function bottom_menu_option() {
+  local menu_number=$1
+  local menu_text=$2
+  local color=$3
+  local max_length=57
+  local padding=$((max_length - ${#menu_text}))
+  printf " │  $color${menu_number}${white}) ${white}${menu_text}%-${padding}s${white}│\n" ''
 }
 
 function menu_ui() {
