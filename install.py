@@ -59,6 +59,20 @@ def remove_symbolic_link(symlink_file):
     print("Symbolic link removed successfully.")
 
 
+def start_service():
+    system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+    subprocess.call(f"{system_service_file} start", shell=True)
+
+    print("Service started successfully.")
+
+
+def stop_service():
+    system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+    subprocess.call(f"{system_service_file} stop", shell=True)
+
+    print("Service stopped successfully.")
+
+
 def install():
     generate_moonraker_service()
 
@@ -70,14 +84,13 @@ def install():
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
     create_symbolic_link(moonraker_service_file, system_service_file)
 
-    subprocess.call(f"{system_service_file} start", shell=True)
+    start_service()
 
 
 def uninstall():
+    stop_service()
+
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
-
-    subprocess.call(f"{system_service_file} stop", shell=True)
-
     remove_symbolic_link(system_service_file)
 
     system_config_file = os.path.join(SYSTEM_CONFIG_DIR, CONFIG_FILE)
