@@ -2,6 +2,7 @@
 
 import os
 import sys
+import subprocess
 
 MOONRAKER_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -69,13 +70,18 @@ def install():
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
     create_symbolic_link(moonraker_service_file, system_service_file)
 
+    subprocess.call(f"{system_service_file} start", shell=True)
+
 
 def uninstall():
+    system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+
+    subprocess.call(f"{system_service_file} stop", shell=True)
+
+    remove_symbolic_link(system_service_file)
+
     system_config_file = os.path.join(SYSTEM_CONFIG_DIR, CONFIG_FILE)
     remove_symbolic_link(system_config_file)
-
-    system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
-    remove_symbolic_link(system_service_file)
 
 
 def main():
