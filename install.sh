@@ -78,8 +78,8 @@ function menu_ui() {
 }
 
 function install() {
-  ln -s config/moonraker.conf "$CONFIG_DIR"
-  ln -s service/S56moonraker_service "$SERVICE_DIR"
+  ln -s ./config/moonraker.conf "$CONFIG_DIR"
+  ln -s ./service/S56moonraker_service "$SERVICE_DIR"
 }
 
 function uninstall() {
