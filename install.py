@@ -47,11 +47,23 @@ def generate_moonraker_service():
     print("File permissions changed successfully.")
 
 
+def delete_file(file_path):
+    if not os.path.exists(file_path):
+        print("File does not exist.")
+        return
+
+    os.remove(file_path)
+
+    print("File deleted successfully.")
+
+
 def create_symbolic_link(source_file, symlink_file):
     if os.path.exists(symlink_file):
         os.unlink(symlink_file)
+        delete_file(symlink_file)
 
     os.symlink(source_file, symlink_file)
+
     print("Symbolic link created successfully.")
 
 
@@ -60,6 +72,8 @@ def remove_symbolic_link(symlink_file):
         return
 
     os.unlink(symlink_file)
+    delete_file(symlink_file)
+
     print("Symbolic link removed successfully.")
 
 
