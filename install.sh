@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -e
-clear
 
 function set_paths() {
   # Colors #
@@ -27,27 +26,24 @@ function set_paths() {
   done
 }
 
-function install() {
-  ln -s ./config/moonraker.conf "$CONFIG_DIR"
-  ln -s ./service/S56moonraker_service "$SERVICE_DIR"
-}
-
 function uninstall() {
   unlink "$CONFIG_DIR/moonraker.conf"
   unlink "$SERVICE_DIR/S56moonraker_service"
 }
 
+function install() {
+  uninstall
+
+  ln -sr ./config/moonraker.conf "$CONFIG_DIR"
+  ln -sr ./service/S56moonraker_service "$SERVICE_DIR"
+}
+
 rm -rf /root/.cache
 set_paths
-
-if [ "$1" = "install" ]; then
-  install
-  return 0
-fi
 
 if [ "$1" = "uninstall" ]; then
   uninstall
   return 0
 fi
 
-echo "Usage: $0 [install|uninstall]"
+install
