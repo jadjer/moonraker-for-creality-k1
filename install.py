@@ -43,13 +43,17 @@ def generate_moonraker_service():
 
 
 def create_symbolic_link(source_file, symlink_file):
-    # Create a symbolic link
+    if os.path.exists(symlink_file):
+        os.unlink(symlink_file)
+
     os.symlink(source_file, symlink_file)
     print("Symbolic link created successfully.")
 
 
 def remove_symbolic_link(symlink_file):
-    # Remove the symbolic link
+    if not os.path.exists(symlink_file):
+        return
+
     os.unlink(symlink_file)
     print("Symbolic link removed successfully.")
 
