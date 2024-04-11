@@ -4,8 +4,8 @@
 #
 
 USER_DATA=/usr/data
-PROG=/usr/data/moonraker/moonraker-env/bin/python
-PY_SCRIPT=/usr/data/moonraker/moonraker/moonraker/moonraker.py
+PROG={moonraker_env}
+PY_SCRIPT={moonraker_dir}/moonraker/moonraker/moonraker.py
 PRINTER_DATA_DIR=$USER_DATA/printer_data
 PRINTER_CONFIG_DIR=$PRINTER_DATA_DIR/config
 PRINTER_LOGS_DIR=$PRINTER_DATA_DIR/logs
