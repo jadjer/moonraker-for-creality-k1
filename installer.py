@@ -113,6 +113,7 @@ def install():
 
     create_symbolic_link(moonraker_service_file, system_service_file)
 
+    stop_service()
     start_service()
 
 
