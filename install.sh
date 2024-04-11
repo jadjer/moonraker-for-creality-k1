@@ -14,11 +14,12 @@ function set_paths() {
   red=`echo -en "\033[01;31m"`
 
   # Paths #
-  USERDATA_DIR="/usr/data"
   SERVICE_DIR="/etc/init.d"
+  USERDATA_DIR="/usr/data"
+  PRINTER_DATA_DIR="$USERDATA_DIR/printer_data"
   CONFIG_DIR="$USERDATA_DIR/config"
 
-  for dir in "$USERDATA_DIR" "$SERVICE_DIR" "$CONFIG_DIR"; do
+  for dir in "$SERVICE_DIR" "$USERDATA_DIR" "$PRINTER_DATA_DIR" "$CONFIG_DIR"; do
     if [ ! -d "$dir" ]; then
         echo "Error: $dir not found"
         exit 1
