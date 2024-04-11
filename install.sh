@@ -17,7 +17,7 @@ function set_paths() {
   SERVICE_DIR="/etc/init.d"
   USERDATA_DIR="/usr/data"
   PRINTER_DATA_DIR="$USERDATA_DIR/printer_data"
-  CONFIG_DIR="$USERDATA_DIR/config"
+  CONFIG_DIR="$PRINTER_DATA_DIR/config"
 
   for dir in "$SERVICE_DIR" "$USERDATA_DIR" "$PRINTER_DATA_DIR" "$CONFIG_DIR"; do
     if [ ! -d "$dir" ]; then
