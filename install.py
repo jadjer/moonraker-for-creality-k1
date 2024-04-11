@@ -42,6 +42,10 @@ def generate_moonraker_service():
 
     print("Output file generated successfully.")
 
+    os.chmod(output_file, 0o755)  # 0o755 corresponds to -rwxr-xr-x permissions
+
+    print("File permissions changed successfully.")
+
 
 def create_symbolic_link(source_file, symlink_file):
     if os.path.exists(symlink_file):
@@ -78,10 +82,12 @@ def install():
 
     moonraker_config_file = os.path.join(MOONRAKER_CONFIG_DIR, CONFIG_FILE)
     system_config_file = os.path.join(SYSTEM_CONFIG_DIR, CONFIG_FILE)
+
     create_symbolic_link(moonraker_config_file, system_config_file)
 
     moonraker_service_file = os.path.join(MOONRAKER_SERVICE_DIR, SERVICE_FILE)
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+
     create_symbolic_link(moonraker_service_file, system_service_file)
 
     start_service()
