@@ -79,6 +79,11 @@ def remove_symbolic_link(symlink_file):
 
 def start_service():
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+
+    if not os.path.exists(system_service_file):
+        print("Service file does not exist.")
+        return
+
     subprocess.call(f"{system_service_file} start", shell=True)
 
     print("Service started successfully.")
@@ -86,6 +91,11 @@ def start_service():
 
 def stop_service():
     system_service_file = os.path.join(SYSTEM_SERVICE_DIR, SERVICE_FILE)
+
+    if not os.path.exists(system_service_file):
+        print("Service file does not exist.")
+        return
+
     subprocess.call(f"{system_service_file} stop", shell=True)
 
     print("Service stopped successfully.")
