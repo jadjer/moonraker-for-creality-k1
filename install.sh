@@ -78,7 +78,7 @@ function menu_ui() {
 }
 
 function install() {
-  tar -xf moonraker-venv.tar.xz
+  tar -xvf moonraker-venv.tar.xz
 
   ln -s config/moonraker.conf "$CONFIG_DIR"
   ln -s service/S56moonraker_service "$SERVICE_DIR"
