@@ -10,6 +10,11 @@ Clone installer script
 git clone --recurse-submodules https://github.com/jadjer/moonraker-for-creality-k1.git
 ```
 
+Go to installer script 
+```bash
+cd moonraker-for-creality-k1
+```
+
 Install moonraker
 ```bash
 python3 installer.py install
