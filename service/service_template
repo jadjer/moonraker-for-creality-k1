@@ -18,7 +18,7 @@ start() {{
   rm -rf $TEMP_DIR
   mkdir -p $TEMP_DIR
 
-  TMPDIR=$TEMP_DIR HOME=$HOME_DIR start-stop-daemon -S -q -b -m -p $PID_FILE  --exec $PROG -- $PY_SCRIPT -d $PRINTER_CONFIG_DIR
+  TMPDIR=$TEMP_DIR HOME=$HOME_DIR start-stop-daemon -S -q -b -m -p $PID_FILE  --exec $PROG -- $PY_SCRIPT -d $PRINTER_DATA_DIR
 }}
 stop() {{
   start-stop-daemon -K -q -p $PID_FILE
